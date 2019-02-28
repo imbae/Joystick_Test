@@ -5,8 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Joystick_Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="653.525" Width="335" Closing="Window_Closing">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <local:JoystickButtonSwitch x:Key="JoystickButtonSwitch" />
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="36,26,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,53,0,0" TextWrapping="Wrap" Text="Y" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,82,0,0" TextWrapping="Wrap" Text="Z" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,110,0,0" TextWrapping="Wrap" Text="RotationZ" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,139,0,0" TextWrapping="Wrap" Text="PointOfViewControllers0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,172,0,0" TextWrapping="Wrap" Text="Button1" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,207,0,0" TextWrapping="Wrap" Text="Button2" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,245,0,0" TextWrapping="Wrap" Text="Button3" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,285,0,0" TextWrapping="Wrap" Text="Button4" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,324,0,0" TextWrapping="Wrap" Text="Button5" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,359,0,0" TextWrapping="Wrap" Text="Button6" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="36,395,0,0" TextWrapping="Wrap" Text="Button7" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,432,0,0" TextWrapping="Wrap" Text="Button8" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,469,0,0" TextWrapping="Wrap" Text="Button9" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,505,0,0" TextWrapping="Wrap" Text="Button10" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,540,0,0" TextWrapping="Wrap" Text="Button11" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,579,0,0" TextWrapping="Wrap" Text="Button12" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="74,26,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50" 
+                   Text="{Binding X}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="75,53,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+                   Text="{Binding Y}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="74,82,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+                   Text="{Binding Z}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="114,110,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+                   Text="{Binding RotationZ}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="184,139,0,0" 
+                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+                   Text="{Binding PointOfViewControllers0}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,172,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button0}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,207,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button1}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,245,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button2}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,285,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button3}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,324,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button4}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,359,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button5}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,395,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button6}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,432,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button7}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="103,469,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button8}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,505,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button9}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,540,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button10}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,579,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
+            Text="{Binding Button11}"/>
+
+
+        <Button x:Name="GetJoystick_Button" Content="Get Joystick" 
+                HorizontalAlignment="Right" Margin="0,10,10,0" 
+                VerticalAlignment="Top" Width="100" Height="32"
+                Command="{Binding GetJoystickData_ButtonClickCommand}"/>
+        <Button x:Name="StopJoystick_Button" Content="Stop" 
+            HorizontalAlignment="Right" Margin="0,47,10,0" 
+            VerticalAlignment="Top" Width="100" Height="32"
+            Command="{Binding StopJoystickData_ButtonClickCommand}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,174,0,0" VerticalAlignment="Top"
+                     IsChecked="{Binding Button0, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,209,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button1, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,247,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button2, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,287,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button3, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,326,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button4, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,361,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button5, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,397,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button6, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,434,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button7, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,471,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button8, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,507,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button9, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,542,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button10, Converter={StaticResource JoystickButtonSwitch}}"/>
+        <RadioButton HorizontalAlignment="Left" Margin="167,581,0,0" VerticalAlignment="Top"
+            IsChecked="{Binding Button11, Converter={StaticResource JoystickButtonSwitch}}"/>
+
+
+
+
+
     </Grid>
 </Window>
