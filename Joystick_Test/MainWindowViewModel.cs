@@ -384,7 +384,11 @@ namespace Joystick_Test
         public void ThreadDispose()
         {
             activeThread = false;
-            joystickThread.Join();
+
+            if(joystickThread != null && joystickThread.IsAlive)
+            {
+                joystickThread.Join();
+            }            
         }
 
         ICommand _GetJoystickData_ButtonClickCommand;
