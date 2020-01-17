@@ -1,122 +1,3210 @@
-﻿<Window x:Class="Joystick_Test.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Joystick_Test"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="653.525" Width="335" Closing="Window_Closing">
+﻿<Window
+    x:Class="Joystick_Test.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Joystick_Test"
+    mc:Ignorable="d"
+    Title="MainWindow"
+    Height="797.241"
+    Width="1241.948"
+    Closing="Window_Closing">
 
     <Window.Resources>
         <ResourceDictionary>
-            <local:JoystickButtonSwitch x:Key="JoystickButtonSwitch" />
+            <local:JoystickButtonSwitch
+                x:Key="JoystickButtonSwitch" />
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="36,26,0,0" TextWrapping="Wrap" Text="X" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,53,0,0" TextWrapping="Wrap" Text="Y" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,82,0,0" TextWrapping="Wrap" Text="Z" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,110,0,0" TextWrapping="Wrap" Text="RotationZ" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="31,139,0,0" TextWrapping="Wrap" Text="PointOfViewControllers0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,172,0,0" TextWrapping="Wrap" Text="Button1" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,207,0,0" TextWrapping="Wrap" Text="Button2" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,245,0,0" TextWrapping="Wrap" Text="Button3" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,285,0,0" TextWrapping="Wrap" Text="Button4" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,324,0,0" TextWrapping="Wrap" Text="Button5" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,359,0,0" TextWrapping="Wrap" Text="Button6" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="36,395,0,0" TextWrapping="Wrap" Text="Button7" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,432,0,0" TextWrapping="Wrap" Text="Button8" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,469,0,0" TextWrapping="Wrap" Text="Button9" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,505,0,0" TextWrapping="Wrap" Text="Button10" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,540,0,0" TextWrapping="Wrap" Text="Button11" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="35,579,0,0" TextWrapping="Wrap" Text="Button12" VerticalAlignment="Top"/>
+        <Button
+            x:Name="GetJoystick_Button"
+            Content="Get Joystick"
+            Margin="1128,10,0,0"
+            VerticalAlignment="Top"
+            Height="32"
+            Command="{Binding GetJoystickData_ButtonClickCommand}"
+            HorizontalAlignment="Left"
+            Width="95" />
+        <Button
+            x:Name="StopJoystick_Button"
+            Content="Stop"
+            HorizontalAlignment="Left"
+            Margin="1128,47,0,0"
+            VerticalAlignment="Top"
+            Width="95"
+            Height="32"
+            Command="{Binding StopJoystickData_ButtonClickCommand}" />
 
-        <TextBlock HorizontalAlignment="Left" Margin="74,26,0,0" 
-                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50" 
-                   Text="{Binding X}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="75,53,0,0" 
-                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-                   Text="{Binding Y}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="74,82,0,0" 
-                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-                   Text="{Binding Z}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="114,110,0,0" 
-                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-                   Text="{Binding RotationZ}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="184,139,0,0" 
-                   TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-                   Text="{Binding PointOfViewControllers0}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,172,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button0}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,207,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button1}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,245,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button2}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,285,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button3}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,324,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button4}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,359,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button5}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,395,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button6}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,432,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button7}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="103,469,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button8}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,505,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button9}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,540,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button10}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,579,0,0" 
-            TextWrapping="Wrap" VerticalAlignment="Top" Width="50"
-            Text="{Binding Button11}"/>
+        <GroupBox
+            Header="Buttons"
+            HorizontalAlignment="Left"
+            Height="458"
+            Margin="10,0,0,10"
+            VerticalAlignment="Bottom"
+            Width="1213"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button0"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button1"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button2"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button3"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button4"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button5"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button6"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button7"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button8"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button9"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button10"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button11"
+                    VerticalAlignment="Top" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button0}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,31,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button1}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button2}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button3}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button4}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button5}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,138,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button6}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button7}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,178,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button8}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button9}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,220,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button10}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,241,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button11}" />
 
 
-        <Button x:Name="GetJoystick_Button" Content="Get Joystick" 
-                HorizontalAlignment="Right" Margin="0,10,10,0" 
-                VerticalAlignment="Top" Width="100" Height="32"
-                Command="{Binding GetJoystickData_ButtonClickCommand}"/>
-        <Button x:Name="StopJoystick_Button" Content="Stop" 
-            HorizontalAlignment="Right" Margin="0,47,10,0" 
-            VerticalAlignment="Top" Width="100" Height="32"
-            Command="{Binding StopJoystickData_ButtonClickCommand}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,174,0,0" VerticalAlignment="Top"
-                     IsChecked="{Binding Button0, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,209,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button1, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,247,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button2, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,287,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button3, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,326,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button4, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,361,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button5, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,397,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button6, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,434,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button7, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,471,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button8, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,507,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button9, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,542,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button10, Converter={StaticResource JoystickButtonSwitch}}"/>
-        <RadioButton HorizontalAlignment="Left" Margin="167,581,0,0" VerticalAlignment="Top"
-            IsChecked="{Binding Button11, Converter={StaticResource JoystickButtonSwitch}}"/>
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button0, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,33,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button1, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button2, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button3, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button4, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button5, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button6, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button7, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,180,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button8, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,201,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button9, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,222,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button10, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,243,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button11, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button12"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,262,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button12}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,264,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button12, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button13"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,283,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button13}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,285,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button13, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button14"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,304,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button14}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,306,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button14, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button15"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,325,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button15}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,327,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button15, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button16"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,346,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button16}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,348,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button16, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button17"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,367,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button17}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,369,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button17, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button18"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,388,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button18}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,390,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button18, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button19"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="65,409,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button19}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="120,411,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button19, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button20"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button21"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button22"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button23"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button24"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button25"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button26"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button27"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button28"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button29"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button30"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button31"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button32"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button33"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button34"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button35"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button36"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button37"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button38"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="168,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button39"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button20}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button21}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button22}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button23}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button24}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button25}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button26}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button27}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,178,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button28}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button29}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,220,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button30}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,241,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button31}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,262,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button32}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,283,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button33}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,304,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button34}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,325,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button35}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,346,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button36}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,367,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button37}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,388,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button38}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="237,409,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button39}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button20, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,35,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button21, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button22, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button23, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button24, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button25, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button26, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button27, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,180,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button28, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,201,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button29, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,222,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button30, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,243,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button31, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,264,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button32, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,285,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button33, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,306,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button34, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,327,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button35, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,348,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button36, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,369,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button37, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,390,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button38, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="292,411,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button39, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button40"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button41"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button42"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button43"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button44"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button45"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button46"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button47"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button48"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button49"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button50"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button51"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button52"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button53"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button54"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button55"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button56"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button57"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button58"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="341,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button59"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button40}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button41}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button42}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button43}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button44}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button45}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button46}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button47}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,178,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button48}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button49}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,220,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button50}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,241,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button51}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,262,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button52}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,283,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button53}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,304,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button54}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,325,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button55}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,346,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button56}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,367,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button57}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,388,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button58}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="410,409,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button59}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button40, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,35,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button41, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button42, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button43, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button44, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button45, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button46, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button47, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,180,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button48, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,201,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button49, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,222,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button50, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,243,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button51, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,264,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button52, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,285,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button53, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,306,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button54, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,327,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button55, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,348,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button56, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,369,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button57, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,390,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button58, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="465,411,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button59, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button60"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button61"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button62"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button63"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button64"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button65"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button66"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button67"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button68"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button69"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button70"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button71"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button72"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button73"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button74"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button75"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button76"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button77"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button78"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="518,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button79"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button60}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button61}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button62}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button63}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button64}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button65}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button66}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button67}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,178,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button68}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button69}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,220,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button70}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,241,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button71}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,262,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button72}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,283,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button73}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,304,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button74}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,325,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button75}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,346,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button76}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,367,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button77}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,388,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button78}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="587,409,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button79}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button60, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,35,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button61, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button62, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button63, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button64, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button65, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button66, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button67, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,180,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button68, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,201,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button69, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,222,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button70, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,243,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button71, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,264,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button72, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,285,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button73, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,306,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button74, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,327,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button75, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,348,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button76, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,369,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button77, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,390,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button78, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="642,411,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button79, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button80"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button81"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button82"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button83"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button84"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button85"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button86"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button87"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button88"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button89"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button90"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button91"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button92"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button93"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button94"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button95"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button96"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button97"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button98"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="692,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button99"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button80}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button81}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button82}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button83}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button84}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button85}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button86}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button87}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,178,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button88}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button89}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,220,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button90}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,241,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button91}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,262,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button92}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,283,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button93}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,304,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button94}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,325,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button95}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,346,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button96}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,367,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button97}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,388,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button98}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="761,409,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button99}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button80, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,35,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button81, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button82, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button83, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button84, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button85, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button86, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button87, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,180,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button88, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,201,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button89, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,222,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button90, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,243,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button91, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,264,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button92, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,285,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button93, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,306,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button94, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,327,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button95, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,348,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button96, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,369,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button97, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,390,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button98, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="816,411,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button99, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button100"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button101"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button102"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button103"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button104"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button105"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button106"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button107"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,178,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button108"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button109"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,220,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button110"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,241,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button111"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,262,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button112"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,283,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button113"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,304,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button114"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,325,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button115"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,346,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button116"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,367,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button117"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,388,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button118"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="872,409,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button119"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,10,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button100}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,33,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button101}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,52,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button102}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,73,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button103}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,94,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button104}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,115,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button105}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,136,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button106}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,157,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button107}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,178,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button108}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,199,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button109}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,220,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button110}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,241,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button111}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,262,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button112}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,283,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button113}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,304,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button114}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,325,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button115}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,346,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button116}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,367,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button117}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,388,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button118}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="941,409,-19,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button119}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,12,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button100, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,35,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button101, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,54,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button102, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,75,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button103, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,96,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button104, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,117,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button105, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,138,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button106, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,159,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button107, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,180,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button108, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,201,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button109, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,222,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button110, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,243,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button111, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,264,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button112, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,285,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button113, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,306,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button114, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,327,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button115, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,348,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button116, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,369,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button117, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,390,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button118, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="996,411,-39,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button119, Converter={StaticResource JoystickButtonSwitch}}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button120"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,31,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button121"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,52,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button122"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,73,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button123"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,94,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button124"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button125"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button126"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1046,157,0,0"
+                    TextWrapping="Wrap"
+                    Text="Button127"
+                    VerticalAlignment="Top" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button120}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button121}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,52,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button122}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,73,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button123}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,94,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button124}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,115,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button125}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button126}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1115,157,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Button127}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,12,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button120, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,35,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button121, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,54,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button122, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,75,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button123, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,96,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button124, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,117,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button125, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,138,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button126, Converter={StaticResource JoystickButtonSwitch}}" />
+                <RadioButton
+                    HorizontalAlignment="Left"
+                    Margin="1170,159,0,0"
+                    VerticalAlignment="Top"
+                    IsChecked="{Binding Button127, Converter={StaticResource JoystickButtonSwitch}}" />
+
+            </Grid>
+        </GroupBox>
+        <GroupBox
+            Header="Conroller"
+            HorizontalAlignment="Left"
+            Height="283"
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Width="1113">
+            <Grid>
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="X"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,33,0,0"
+                    TextWrapping="Wrap"
+                    Text="Y"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,56,0,0"
+                    TextWrapping="Wrap"
+                    Text="Z"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding X}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Y}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,56,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Z}"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding X}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,33,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding Y}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,56,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding Z}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,90,0,0"
+                    TextWrapping="Wrap"
+                    Text="RotationX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,113,0,0"
+                    TextWrapping="Wrap"
+                    Text="RotationY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,136,0,0"
+                    TextWrapping="Wrap"
+                    Text="RotationZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,90,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding RotationX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,113,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding RotationY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,136,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding RotationZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,90,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding RotationX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,113,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding RotationY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,136,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding RotationZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,129,0,0"
+                    TextWrapping="Wrap"
+                    Text="Sliders0"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,151,0,0"
+                    TextWrapping="Wrap"
+                    Text="Sliders1"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,129,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding Sliders0}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,151,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding Sliders1}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,129,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Sliders0}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,151,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding Sliders1}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="PointOfViewControllers0"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,33,0,0"
+                    TextWrapping="Wrap"
+                    Text="PointOfViewControllers1"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,56,0,0"
+                    TextWrapping="Wrap"
+                    Text="PointOfViewControllers2"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,79,0,0"
+                    TextWrapping="Wrap"
+                    Text="PointOfViewControllers3"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="27000"
+                    Value="{Binding PointOfViewControllers0}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,33,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="27000"
+                    Value="{Binding PointOfViewControllers1}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,56,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="27000"
+                    Value="{Binding PointOfViewControllers2}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,79,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="27000"
+                    Value="{Binding PointOfViewControllers3}" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding PointOfViewControllers0}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding PointOfViewControllers1}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,56,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding PointOfViewControllers2}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,79,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding PointOfViewControllers3}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,176,0,0"
+                    TextWrapping="Wrap"
+                    Text="VelocityX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="VelocityY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="10,222,0,0"
+                    TextWrapping="Wrap"
+                    Text="VelocityZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,176,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding VelocityX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,199,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding VelocityY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="68,222,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding VelocityZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,176,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding VelocityX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,199,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding VelocityY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="173,222,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding VelocityZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,186,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularVelocityX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,209,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularVelocityY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="251,232,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularVelocityZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,186,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularVelocityX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,209,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularVelocityY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,232,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularVelocityZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,186,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularVelocityX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,209,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularVelocityY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,232,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularVelocityZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="VelocitySliders0"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,33,0,0"
+                    TextWrapping="Wrap"
+                    Text="VelocitySliders1"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding VelocitySliders0}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,33,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding VelocitySliders1}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,10,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding VelocitySliders0}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,33,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding VelocitySliders1}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,69,0,0"
+                    TextWrapping="Wrap"
+                    Text="AccelerationSliders0"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,92,0,0"
+                    TextWrapping="Wrap"
+                    Text="AccelerationSliders1"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,70,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AccelerationSliders0}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,93,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AccelerationSliders1}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,69,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AccelerationSliders0}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,93,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AccelerationSliders1}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,109,0,0"
+                    TextWrapping="Wrap"
+                    Text="AccelerationX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,132,0,0"
+                    TextWrapping="Wrap"
+                    Text="AccelerationY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="250,155,0,0"
+                    TextWrapping="Wrap"
+                    Text="AccelerationZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,109,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AccelerationX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,132,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AccelerationY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="388,155,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AccelerationZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,109,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AccelerationX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,132,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AccelerationY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="493,155,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AccelerationZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,186,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularAccelerationX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,209,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularAccelerationY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="570,232,0,0"
+                    TextWrapping="Wrap"
+                    Text="AngularAccelerationZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,186,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularAccelerationX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,209,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularAccelerationY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="691,232,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding AngularAccelerationZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,186,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularAccelerationX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,212,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularAccelerationY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="796,232,0,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding AngularAccelerationZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,10,0,0"
+                    TextWrapping="Wrap"
+                    Text="ForceX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,33,0,0"
+                    TextWrapping="Wrap"
+                    Text="ForceY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,56,0,0"
+                    TextWrapping="Wrap"
+                    Text="ForceZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="943,10,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding ForceX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="943,33,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding ForceY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="943,56,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding ForceZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,10,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding ForceX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,33,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding ForceY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,56,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding ForceZ}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,92,0,0"
+                    TextWrapping="Wrap"
+                    Text="TorqueX"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,115,0,0"
+                    TextWrapping="Wrap"
+                    Text="TorqueY"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,138,0,0"
+                    TextWrapping="Wrap"
+                    Text="TorqueZ"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="943,92,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding TorqueX}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="943,115,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding TorqueY}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="942,138,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding TorqueZ}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1048,92,-2,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding TorqueX}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1048,115,-2,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding TorqueY}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,136,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding TorqueZ}"
+                    Height="18" />
+
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="865,176,0,0"
+                    TextWrapping="Wrap"
+                    Text="ForceSliders0"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="864,199,0,0"
+                    TextWrapping="Wrap"
+                    Text="ForceSliders1"
+                    VerticalAlignment="Top"
+                    Height="18" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="942,176,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding ForceSliders0}" />
+                <Slider
+                    HorizontalAlignment="Left"
+                    Margin="942,199,0,0"
+                    VerticalAlignment="Top"
+                    Width="100"
+                    Minimum="0"
+                    Maximum="65536"
+                    Value="{Binding ForceSliders1}" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,176,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding ForceSliders0}"
+                    Height="18" />
+                <TextBlock
+                    HorizontalAlignment="Left"
+                    Margin="1047,199,-1,0"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    Width="50"
+                    Text="{Binding ForceSliders1}"
+                    Height="18" />
+            </Grid>
+        </GroupBox>
 
 
 
